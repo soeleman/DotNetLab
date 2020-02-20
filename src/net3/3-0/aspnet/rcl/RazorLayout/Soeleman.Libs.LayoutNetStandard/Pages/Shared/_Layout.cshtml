@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Layout NET Standard</title>
+    @await Component.InvokeAsync("BootstrapCss")
+    @await Component.InvokeAsync("SiteAspNetCoreCss")
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <header>
+        @await Component.InvokeAsync("NavMenuItem", "white")
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        @await Component.InvokeAsync("FooterAspNetCore")
+    </footer>
+
+    @await Component.InvokeAsync("Jquery")
+    @await Component.InvokeAsync("BootstrapJs")
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

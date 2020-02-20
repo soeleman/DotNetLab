@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.7.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ApiExplorer" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.0.0-preview8.19405.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="4.0.0-preview8.19405.7" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
+  </ItemGroup>
+
+  <ItemGroup Label="API Controllers">
+    <PackageReference Include="Soeleman.Libs.ClassNetCore" Version="2019.10.14.3148" />
+    <PackageReference Include="Soeleman.Libs.ClassNetStandard" Version="2019.10.14.3148" />
+    <PackageReference Include="Soeleman.Libs.RclNetCore" Version="2019.10.14.3148" />
+    <PackageReference Include="Soeleman.Libs.RclNetStandard" Version="2019.10.14.3149" />
+  </ItemGroup>
+  
+</Project>

@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <ProjectReference Include="..\Soeleman.Libs.SayHi\Soeleman.Libs.SayHi.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.SayHiOk\Soeleman.Libs.SayHiOk.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.Hello\Soeleman.Libs.Hello.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.Parent\Soeleman.Libs.Parent.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.Original\Soeleman.Libs.Original.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.NetStandard\Soeleman.Libs.NetStandard.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.BuildOverride\Soeleman.Libs.BuildOverride.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <PackageReference Include="Soeleman.Libs.SayHi" Version="2019.10.15.1447" />
+    <PackageReference Include="Soeleman.Libs.SayHiOk" Version="2019.10.15.1445" />
+    <PackageReference Include="Soeleman.Libs.Hello" Version="2019.10.15.1445" />
+    <PackageReference Include="Soeleman.Libs.Parent" Version="2019.10.15.1445" />
+    <PackageReference Include="Soeleman.Libs.Original" Version="2019.10.15.1445" />
+    <PackageReference Include="Soeleman.Libs.NetStandard" Version="2019.10.15.1445" />
+    <PackageReference Include="Soeleman.Libs.BuildOverride" Version="2019.10.15.1446" />
+  </ItemGroup>
+
+</Project>

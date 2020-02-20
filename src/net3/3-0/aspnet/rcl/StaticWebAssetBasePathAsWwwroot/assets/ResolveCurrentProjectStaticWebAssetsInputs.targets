@@ -1,0 +1,59 @@
+<Project ToolsVersion="14.0">
+
+  <Target Name="ResolveCurrentProjectStaticWebAssetsInputs" 
+          Condition="$(ResolveCurrentProjectStaticWebAssetsInputsOverride) == '' or $(ResolveCurrentProjectStaticWebAssetsInputsOverride) != 'true'"
+          DependsOnTargets="$(ResolveCurrentProjectStaticWebAssetsInputsDependsOn)">
+
+	  <PropertyGroup>
+      
+		  <StaticWebAssetBasePath Condition="$(StaticWebAssetBasePath) == ''">_content/$(PackageId)</StaticWebAssetBasePath>
+		  <StaticWebAssetBasePathAsWwwroot Condition="$(StaticWebAssetBasePathAsWwwroot) == ''">false</StaticWebAssetBasePathAsWwwroot>
+      
+	  </PropertyGroup>
+
+	  <ItemGroup>
+
+		  <_ThisProjectStaticWebAsset Include="@(Content)" 
+                                  Condition="$([System.String]::Copy('%(Identity)').StartsWith('wwwroot'))">
+
+			  <!-- Remove the wwwroot\ prefix -->
+			  <!-- <RelativePath>$([System.String]::Copy('%(Identity)').Substring(8))</RelativePath> -->
+			  <RelativePath Condition="$(StaticWebAssetBasePathAsWwwroot) == 'false'">$([System.String]::Copy('%(Identity)').Substring(8))</RelativePath>
+			  <RelativePath Condition="$(StaticWebAssetBasePathAsWwwroot) == 'true'">$([System.String]::Copy('%(Identity)').Substring($([MSBuild]::Add($(StaticWebAssetBasePath.Length), 9))))</RelativePath>
+
+		  </_ThisProjectStaticWebAsset>
+
+      <StaticWebAsset Include="@(_ThisProjectStaticWebAsset->'%(FullPath)')" 
+                      RemoveMetadata="CopyToPublishDirectory;ExcludeFromSingleFile">
+
+	      <!-- (Package, Project, '' (CurrentProject)) -->
+	      <SourceType></SourceType>
+
+	      <!-- Identifier describing the source, the package id, the project name, empty for the current project.  -->
+	      <SourceId>$(PackageId)</SourceId>
+
+	      <!--
+		      Full path to the content root for the item:
+		      * For packages it corresponds to %userprofile%/.nuget/packages/<<PackageId>>/<<PackageVersion>>/razorContent
+		      * For referenced projects it corresponds to <<FullProjectRefPath>>/wwwroot
+		      * For the current projects it corresponds to $(MSBuildProjectDirectory)wwwroot\
+	      -->
+	      <!-- <ContentRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)\wwwroot\'))</ContentRoot> -->
+	      <ContentRoot Condition="$(StaticWebAssetBasePathAsWwwroot) == 'false'">$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)\wwwroot\'))</ContentRoot>
+	      <ContentRoot Condition="$(StaticWebAssetBasePathAsWwwroot) == 'true'">$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)\wwwroot\$(StaticWebAssetBasePath)\'))</ContentRoot>
+
+	      <!-- Subsection (folder) from the url space where content for this library will be served. -->
+	      <BasePath>$(StaticWebAssetBasePath)</BasePath>
+
+	      <!-- Relative path from the content root for the file. At publish time, we combine the BasePath + Relative
+			      path to determine the final path for the file.
+	      -->
+	      <RelativePath>%(RelativePath)</RelativePath>
+
+      </StaticWebAsset>
+	  
+    </ItemGroup>
+	
+  </Target>
+  
+</Project>

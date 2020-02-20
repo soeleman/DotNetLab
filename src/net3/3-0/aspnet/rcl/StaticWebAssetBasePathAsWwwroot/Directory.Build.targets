@@ -1,0 +1,64 @@
+<Project>
+
+  <PropertyGroup Label="StaticWebAssetAsWwwroot Hooks" 
+                 Condition="$(ResolveCurrentProjectStaticWebAssetsInputsOverride) != '' and $(ResolveCurrentProjectStaticWebAssetsInputsOverride) == 'true'">
+    
+    <!--
+    <StaticWebAssetBasePath Condition="$(StaticWebAssetBasePath) == ''">override</StaticWebAssetBasePath>
+    <StaticWebAssetBasePathAsWwwroot Condition="$(StaticWebAssetBasePathAsWwwroot) == ''">true</StaticWebAssetBasePathAsWwwroot>
+    <ResolveCurrentProjectStaticWebAssetsInputsOverride Condition="$(ResolveCurrentProjectStaticWebAssetsInputsOverride) == ''">true</ResolveCurrentProjectStaticWebAssetsInputsOverride>
+    -->
+    
+    <GetCurrentProjectStaticWebAssetsDependsOn>
+      ResolveCurrentProjectStaticWebAssetsInputsCustom;
+      $(GetCurrentProjectStaticWebAssetsDependsOn)
+    </GetCurrentProjectStaticWebAssetsDependsOn>
+
+    <ResolveStaticWebAssetsInputsDependsOn>
+      ResolveCurrentProjectStaticWebAssetsInputsCustom;
+      $(ResolveStaticWebAssetsInputsDependsOn)
+    </ResolveStaticWebAssetsInputsDependsOn>
+    
+  </PropertyGroup>
+  
+  <Target Name="ResolveCurrentProjectStaticWebAssetsInputsCustom" 
+          Condition="$(ResolveCurrentProjectStaticWebAssetsInputsOverride) != '' and $(ResolveCurrentProjectStaticWebAssetsInputsOverride) == 'true'"
+          DependsOnTargets="$(ResolveCurrentProjectStaticWebAssetsInputsDependsOn)">
+
+    <PropertyGroup>     
+      <StaticWebAssetBasePath Condition="$(StaticWebAssetBasePath) == ''">_content/$(PackageId)</StaticWebAssetBasePath>
+      <StaticWebAssetBasePathAsWwwroot Condition="$(StaticWebAssetBasePathAsWwwroot) == ''">false</StaticWebAssetBasePathAsWwwroot>     
+    </PropertyGroup>
+
+    <ItemGroup>
+
+      <_ThisProjectStaticWebAsset Include="@(Content)" 
+                                  Condition="$([System.String]::Copy('%(Identity)').StartsWith('wwwroot'))">        
+	        <RelativePath Condition="$(StaticWebAssetBasePathAsWwwroot) == 'false'">$([System.String]::Copy('%(Identity)').Substring(8))</RelativePath>
+	        <RelativePath Condition="$(StaticWebAssetBasePathAsWwwroot) == 'true'">$([System.String]::Copy('%(Identity)').Substring($([MSBuild]::Add($(StaticWebAssetBasePath.Length), 9))))</RelativePath>      
+      </_ThisProjectStaticWebAsset>
+
+      <StaticWebAsset Include="@(_ThisProjectStaticWebAsset->'%(FullPath)')" 
+                      RemoveMetadata="CopyToPublishDirectory;ExcludeFromSingleFile">     
+	        <SourceType></SourceType>
+	        <SourceId>$(PackageId)</SourceId>
+	        <ContentRoot Condition="$(StaticWebAssetBasePathAsWwwroot) == 'false'">$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)\wwwroot\'))</ContentRoot>
+	        <ContentRoot Condition="$(StaticWebAssetBasePathAsWwwroot) == 'true'">$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)\wwwroot\$(StaticWebAssetBasePath)\'))</ContentRoot>
+	        <BasePath>$(StaticWebAssetBasePath)</BasePath>
+	        <RelativePath>%(RelativePath)</RelativePath>       
+      </StaticWebAsset>
+	  
+    </ItemGroup>
+	
+    <Message Text="-------- ResolveCurrentProjectStaticWebAssetsInputs BEGIN --------" Importance="high" />
+    <Message Text="(SDK Project) RazorSdk:: $(RazorSdkCurrentVersionProps)" Importance="high" />
+    <Message Text="(SDK Project) Project:: $(AssemblyName)" Importance="high" />
+    <Message Text="(SDK Project) FullPath::" Importance="high" />
+    <Message Text="   $(AssemblyName) => %(StaticWebAsset.FullPath)" Importance="high" />
+    <Message Text="(SDK Project) StaticWebAsset:: [ContentRoot][BasePath]\[RelativePath]" Importance="high" />
+    <Message Text="   $(AssemblyName) => [%(StaticWebAsset.ContentRoot)][%(StaticWebAsset.BasePath)]\[%(StaticWebAsset.RelativePath)]" Importance="high" />
+    <Message Text="-------- ResolveCurrentProjectStaticWebAssetsInputs END ----------" Importance="high" />
+	
+  </Target>
+
+</Project>

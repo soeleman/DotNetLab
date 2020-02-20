@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Soeleman.Libs.Core\Soeleman.Libs.Core.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.LayoutBlazor\Soeleman.Libs.LayoutBlazor.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.LayoutNetCore\Soeleman.Libs.LayoutNetCore.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.LayoutNetStandard\Soeleman.Libs.LayoutNetStandard.csproj" />
+  </ItemGroup>
+
+</Project>

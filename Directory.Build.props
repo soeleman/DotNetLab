@@ -1,0 +1,50 @@
+<Project>
+
+	<PropertyGroup Label="Repository Property">
+		<RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
+		<RepositoryUrl>https://github.com/soeleman/DotNetLab</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/soeleman/DotNetLab</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+	</PropertyGroup>
+	
+	<PropertyGroup Label="Include Property">
+		<IncludeSymbols Condition="'$(IncludeSymbols)' == ''">false</IncludeSymbols>
+		<IncludeSource Condition="'$(IncludeSource)' == ''">false</IncludeSource>
+	</PropertyGroup>
+
+  <PropertyGroup Label="Semantic DateTime Versioning">
+    <VersionMajor Condition="'$(VersionMajor)' == ''">$([System.DateTime]::UtcNow.Year)</VersionMajor>
+    <VersionMinor Condition="'$(VersionMinor)' == ''">$([MSBuild]::Add($([System.DateTime]::UtcNow.Month), 10))$([MSBuild]::Add($([System.DateTime]::UtcNow.Day), 10))</VersionMinor>
+    <VersionPatch Condition="'$(VersionPatch)' == ''">$([MSBuild]::Add($([System.DateTime]::UtcNow.Hour), 10))$([MSBuild]::Add($([System.DateTime]::UtcNow.Minute), 10))</VersionPatch>
+    <VersionBuild Condition="'$(VersionBuild)' == ''">$([System.DateTime]::UtcNow.Second)</VersionBuild>
+    <VersionSemVer>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionSemVer>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Versioning">
+    <Version Condition="'$(Version)' == ''">$(VersionSemVer)</Version>
+    <PackageVersion>$(Version)</PackageVersion>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <FileVersion>$(Version)</FileVersion>
+  </PropertyGroup>
+	
+	<PropertyGroup Label="CodeID Property">
+		<Company Condition="'$(Company)' == ''">Soeleman.</Company>
+		<Authors Condition="'$(Authors)' == ''">$(Company)</Authors>
+		<Copyright>© $([System.DateTime]::UtcNow.Year.ToString()) $(Company) All rights reserved.</Copyright>
+	</PropertyGroup>
+	
+	<PropertyGroup Label="Package Property">
+		<PackageIconName Condition="'$(PackageIconName)' == ''">icon256.png</PackageIconName>
+		<PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+		<PackageTags>.NET .NETCore</PackageTags>
+		<PackageIcon Condition="'$(GeneratePackageOnBuild)' == 'true'">$(PackageIconName)</PackageIcon>
+	</PropertyGroup>
+	
+	<ItemGroup Condition=" '$(GeneratePackageOnBuild)' == 'true'">
+		<None Include="$(MSBuildThisFileDirectory)$(PackageIconName)">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>

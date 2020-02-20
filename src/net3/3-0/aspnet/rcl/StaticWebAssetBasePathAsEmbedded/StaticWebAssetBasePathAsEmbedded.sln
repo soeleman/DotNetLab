@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soeleman.Libs.SayHi", "Soeleman.Libs.SayHi\Soeleman.Libs.SayHi.csproj", "{0DD17C4B-224B-4F5A-A27F-E2D3282429DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soeleman.Web", "Soeleman.Web\Soeleman.Web.csproj", "{0B033EB3-37EF-4CBD-BB10-2DC42E2344D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DD17C4B-224B-4F5A-A27F-E2D3282429DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DD17C4B-224B-4F5A-A27F-E2D3282429DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DD17C4B-224B-4F5A-A27F-E2D3282429DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DD17C4B-224B-4F5A-A27F-E2D3282429DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B033EB3-37EF-4CBD-BB10-2DC42E2344D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B033EB3-37EF-4CBD-BB10-2DC42E2344D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B033EB3-37EF-4CBD-BB10-2DC42E2344D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B033EB3-37EF-4CBD-BB10-2DC42E2344D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {613E8805-F3B4-4A36-98D1-D171DD2E64FD}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soeleman.Assets.Core", "Soeleman.Assets.Core\Soeleman.Assets.Core.csproj", "{D099F76E-FD2A-4BE1-ADF0-E63838063DE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soeleman.Web", "Soeleman.Web\Soeleman.Web.csproj", "{546694DD-11EA-4D1A-A25B-05E09984CCB1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D099F76E-FD2A-4BE1-ADF0-E63838063DE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D099F76E-FD2A-4BE1-ADF0-E63838063DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D099F76E-FD2A-4BE1-ADF0-E63838063DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D099F76E-FD2A-4BE1-ADF0-E63838063DE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{546694DD-11EA-4D1A-A25B-05E09984CCB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{546694DD-11EA-4D1A-A25B-05E09984CCB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{546694DD-11EA-4D1A-A25B-05E09984CCB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{546694DD-11EA-4D1A-A25B-05E09984CCB1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D62F77E-D43E-429A-B1B5-5C9257653BB9}
+	EndGlobalSection
+EndGlobal

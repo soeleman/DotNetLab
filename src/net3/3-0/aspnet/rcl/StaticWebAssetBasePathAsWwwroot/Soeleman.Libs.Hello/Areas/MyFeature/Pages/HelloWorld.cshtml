@@ -1,0 +1,14 @@
+﻿@page
+@model Soeleman.Libs.Hello.Areas.MyFeature.Pages.HelloWorldModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Hello World</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap-grid.min.css" integrity="sha256-D9AvR0EzkNZoWZVSvI3ch+uf/Z5izrIpcbsykVphwPU=" crossorigin="anonymous" />
+</head>
+<body>
+    <h1>Hello World from Page inside Library</h1>
+    @await Component.InvokeAsync("HelloWorld")
+</body>
+</html>

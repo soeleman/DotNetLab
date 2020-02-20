@@ -1,0 +1,23 @@
+<Project>
+
+  <PropertyGroup>
+    <CopyDestionationPath>$(SolutionDir)\AppHooks</CopyDestionationPath>
+  </PropertyGroup>
+
+  <Target Name="CopyBuild" AfterTargets="Build">
+
+    <ItemGroup>
+      <OutputFiles Include="$(OutDir)\*.dll"></OutputFiles>
+      <OutputFiles Include="$(OutDir)\*.pdb"></OutputFiles>
+    </ItemGroup>
+    
+    <Message  Text="Copying output file to destination: @(OutputFiles)" 
+              Importance="high"/>
+
+    <Copy SourceFiles="@(OutputFiles)" 
+          DestinationFolder="$(CopyDestionationPath)\%(RecursiveDir)" 
+          OverwriteReadOnlyFiles="true"></Copy>
+  
+  </Target>
+
+</Project>

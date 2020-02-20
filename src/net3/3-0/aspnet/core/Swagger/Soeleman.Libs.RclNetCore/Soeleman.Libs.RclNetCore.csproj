@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <PackageReference Include="Soeleman.Libs.Model" Version="2019.10.14.3161" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <ProjectReference Include="..\Soeleman.Libs.Model\Soeleman.Libs.Model.csproj" />
+  </ItemGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <Description>Assets of $(AssemblyName)</Description>
+    <PackageTags>$(PackageTags) API-Controller</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  
+</Project>

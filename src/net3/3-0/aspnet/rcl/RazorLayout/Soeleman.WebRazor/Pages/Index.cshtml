@@ -1,0 +1,15 @@
+﻿@page
+@model Soeleman.WebRazor.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome Soeleman.WebRazor</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+@await Component.InvokeAsync("WcRclComp")
+<div class="text-center">
+    <div><img src="/_content/Soeleman.Libs.LayoutNetStandard/van-gogh-256.jpg" alt="Van Gogh" /></div>
+    <div><img src="/_content/Soeleman.Libs.LayoutNetCore/lena-256.jpg" alt="Lena" /></div>
+</div>

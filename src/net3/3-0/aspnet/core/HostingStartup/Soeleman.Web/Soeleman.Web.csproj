@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <!--
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="2.9.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+   </ItemGroup>
+   -->
+  
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <PackageReference Include="Soeleman.Libs.NetStandard" Version="2019.11.10.3066" />
+    <PackageReference Include="Soeleman.Libs.Original" Version="2019.11.10.3028" />
+    <PackageReference Include="Soeleman.Libs.RefPackage" Version="2019.11.10.3035" />
+    <PackageReference Include="Soeleman.Libs.RefProject" Version="2019.11.10.3035" />
+    <PackageReference Include="Soeleman.Libs.RefStore" Version="2019.11.10.3035" />
+    <PackageReference Include="Soeleman.Libs.SayHi" Version="2019.11.10.3029" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <ProjectReference Include="..\Soeleman.Libs.NetStandard\Soeleman.Libs.NetStandard.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.Original\Soeleman.Libs.Original.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.RefPackage\Soeleman.Libs.RefPackage.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.RefProject\Soeleman.Libs.RefProject.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.RefStore\Soeleman.Libs.RefStore.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.SayHi\Soeleman.Libs.SayHi.csproj" />
+  </ItemGroup>
+
+</Project>

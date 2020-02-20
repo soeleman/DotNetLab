@@ -1,0 +1,39 @@
+﻿@code {
+    bool collapseNavMenu = true;
+
+    string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+        <a class="navbar-brand" asp-area="" asp-page="/Index">MenuHorizontalApp</a>
+        <button class="navbar-toggler" @onclick="ToggleNavMenu" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="@NavMenuCssClass navbar-collapse d-sm-inline-flex flex-sm-row-reverse" @onclick="ToggleNavMenu">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="" Match="NavLinkMatch.All">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="counter">Counter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="fetchdata">Fetch data</a>
+                </li>
+                @*<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false">Menu</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        <a class="dropdown-item" href="counter">Counter</a>
+                        <a class="dropdown-item" href="fetchdata">Fetch data</a>
+                    </div>
+                </li>*@
+            </ul>
+        </div>
+    </div>
+</nav>

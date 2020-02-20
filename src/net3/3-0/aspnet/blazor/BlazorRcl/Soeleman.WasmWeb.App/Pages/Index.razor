@@ -1,0 +1,24 @@
+﻿@page "/"
+@using Soeleman.Rcl;
+@inject IJSRuntime JSRuntime
+@code {
+    private string currentValue;
+
+    public async void ShowPrompt()
+    {
+        this.currentValue = await ExampleJsInterop.Prompt(JSRuntime, "Enter Your Message:");
+        StateHasChanged();
+    }
+}
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<div>
+    <button type="button" class="btn btn-primary" @onclick="ShowPrompt">Show Prompt</button>
+    <p><strong>@currentValue</strong></p>
+</div>
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<Soeleman.Rcl.RclComponent />

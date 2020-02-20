@@ -1,0 +1,52 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="container-fluid my-component">
+    <div class="row">
+        <div class="col-sm">
+            <h3>van-gogh-256.jpg</h3>
+            <img src="/van-gogh-256.jpg" alt=" 'van-gogh-256.jpg' on root" />
+        </div>
+        <div class="col-sm">
+            <h3>van gogh 256.jpg</h3>
+            <img src="/van gogh 256.jpg" alt=" 'van gogh 256.jpg' on root" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <h3>gogh/van-gogh-256.jpg</h3>
+            <img src="/gogh/van-gogh-256.jpg" alt=" 'van-gogh-256.jpg' on 'gogh' folder" />
+        </div>
+        <div class="col-sm">
+            <h3>gogh/van gogh 256.jpg</h3>
+            <img src="/gogh/van gogh 256.jpg" alt=" 'van gogh 256.jpg' on 'gogh' folder" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <h3>gogh/the gogh/van-gogh-256.jpg</h3>
+            <img src="/gogh/the gogh/van-gogh-256.jpg" alt=" 'van-gogh-256.jpg' on 'gogh/the gogh' folder" />
+        </div>
+        <div class="col-sm">
+            <h3>gogh/the gogh/van gogh 256.jpg</h3>
+            <img src="/gogh/the gogh/van gogh 256.jpg" alt=" 'van gogh 256.jpg' on 'gogh/the gogh' folder" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <h3>van gogh/van-gogh-256.jpg</h3>
+            <img src="/van gogh/van-gogh-256.jpg" alt=" 'van-gogh-256.jpg' on 'van gogh' folder" />
+        </div>
+        <div class="col-sm">
+            <h3>van gogh/van gogh 256.jpg</h3>
+            <img src="/van gogh/van gogh 256.jpg" alt=" 'van gogh 256.jpg' on 'van gogh' folder" />
+        </div>
+    </div>
+</div>
+@(await Html.RenderComponentAsync<Soeleman.Assets.Core.CoreComponent>(RenderMode.ServerPrerendered))

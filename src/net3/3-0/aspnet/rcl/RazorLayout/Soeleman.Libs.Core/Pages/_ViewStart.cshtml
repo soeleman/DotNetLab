@@ -1,0 +1,14 @@
+﻿@{
+    var theme = this.ViewContext.HttpContext.Request.Query["theme"];
+
+    switch(theme)
+    {
+        case "dark":
+            Layout = "_LayoutNetCore";
+            break;
+
+        default:
+            Layout = "_Layout";
+            break;
+    }    
+}

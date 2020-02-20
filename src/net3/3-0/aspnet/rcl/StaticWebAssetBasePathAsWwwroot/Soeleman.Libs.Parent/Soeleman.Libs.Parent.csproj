@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <ProjectReference Include="..\Soeleman.Libs.Child\Soeleman.Libs.Child.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <PackageReference Include="Soeleman.Libs.Child" Version="2019.9.29.2839" />
+  </ItemGroup>
+
+  <PropertyGroup Label="StaticWebAssetAsWwwroot">
+    <StaticWebAssetBasePath Condition="$(StaticWebAssetBasePath) == ''">parent</StaticWebAssetBasePath>
+    <StaticWebAssetBasePathAsWwwroot Condition="$(StaticWebAssetBasePathAsWwwroot) == ''">true</StaticWebAssetBasePathAsWwwroot>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <Description>Assets of $(AssemblyName)</Description>
+    <PackageTags>$(PackageTags) Parent Parent-1.0.0 JavaScript  Razor ViewComponent</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+</Project>

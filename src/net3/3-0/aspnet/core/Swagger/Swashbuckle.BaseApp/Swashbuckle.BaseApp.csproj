@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ApiExplorer" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.0.0-preview8.19405.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="4.0.0-preview8.19405.7" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <PackageReference Include="Soeleman.Libs.ClassNetCore" Version="2019.10.14.3148" />
+    <PackageReference Include="Soeleman.Libs.ClassNetStandard" Version="2019.10.14.3148" />
+    <PackageReference Include="Soeleman.Libs.RclNetCore" Version="2019.10.14.3148" />
+    <PackageReference Include="Soeleman.Libs.RclNetStandard" Version="2019.10.14.3149" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <ProjectReference Include="..\Soeleman.Libs.ClassNetCore\Soeleman.Libs.ClassNetCore.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.ClassNetStandard\Soeleman.Libs.ClassNetStandard.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.Model\Soeleman.Libs.Model.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.RclNetCore\Soeleman.Libs.RclNetCore.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.RclNetStandard\Soeleman.Libs.RclNetStandard.csproj" />
+  </ItemGroup>
+  
+</Project>

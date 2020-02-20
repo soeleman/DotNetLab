@@ -1,0 +1,48 @@
+﻿@page
+@model IndexModel
+@using System.Linq
+@using System.Runtime.Loader
+@{
+    ViewData["Title"] = "Home page";
+
+    var data = AssemblyLoadContext
+        .Default
+        .Assemblies
+        .OrderBy(ks => ks.GetName().Name)
+        .Select((s, i) => new
+        {
+            No  = i + 1,
+            Asm = s.GetName().Name,
+            Typ = string.Join(',', s.DefinedTypes.Where(p => p.ImplementedInterfaces.Contains(typeof(ISay))).Select(t => t.FullName))
+        })
+        //.Where(p => !string.IsNullOrEmpty(p.Typ))
+        .ToList();
+
+    ISay say = new SayHello();
+}
+<table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Assembly</th>
+            <th scope="col">Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in data)
+        {
+            <tr>
+                <th scope="row">@d.No</th>
+                <td>@d.Asm</td>
+                <td>@d.Typ</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="text-center">
+    <h3>@say.SayIt()</h3>
+    @*@{
+        say = new SayTikTok();
+    }*@
+    <h3>@say.SayIt()</h3>
+</div>

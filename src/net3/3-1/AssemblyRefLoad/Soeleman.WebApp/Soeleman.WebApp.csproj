@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Soeleman</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Soeleman.Abstractions\Soeleman.Abstractions.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.Hello\Soeleman.Libs.Hello.csproj" />
+    <ProjectReference Include="..\Soeleman.Libs.TikTok\Soeleman.Libs.TikTok.csproj" />
+  </ItemGroup>
+
+</Project>

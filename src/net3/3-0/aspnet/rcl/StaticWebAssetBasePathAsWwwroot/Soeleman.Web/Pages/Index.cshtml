@@ -1,0 +1,38 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@section Scripts
+{
+    @await Component.InvokeAsync("SayHiJs")
+    @await Component.InvokeAsync("SayHiJs_2_0_0")
+    @await Component.InvokeAsync("HelloWorld")
+    @await Component.InvokeAsync("HelloDotNet")
+    @await Component.InvokeAsync("HelloDotNetCore")
+    @await Component.InvokeAsync("Parent")
+    @await Component.InvokeAsync("Original")
+    @await Component.InvokeAsync("NetStandard")
+    @await Component.InvokeAsync("Override")
+    @(await Html.RenderComponentAsync<Libs.NetStandard.Components.ComponentBlazor>(RenderMode.ServerPrerendered))
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="container-fluid my-component">
+    <div class="row">
+        <div class="col-sm">
+            <h3>img/van gogh 256.jpg</h3>
+            <img src="/img/van gogh 256.jpg" alt=" 'van gogh 256.jpg' on 'img' folder" />
+        </div>
+        <div class="col-sm">
+            <h3>img/more pic/van gogh 256.jpg</h3>
+            <img src="/img/more pic/van gogh 256.jpg" alt=" 'van gogh 256.jpg' on 'img/more pic' folder" />
+        </div>
+        <div class="col-sm">
+            <h3>img/more pic/van-gogh-256.jpg</h3>
+            <img src="/img/more pic/van gogh 256.jpg" alt=" 'van-gogh-256.jpg' on 'img/more pic' folder" />
+        </div>
+    </div>
+</div>
