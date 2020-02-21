@@ -31,6 +31,7 @@ namespace Microsoft.AspNetCore.Builder
             }
 
             efTypeConfig.DbSetTypes
+                .Distinct()
                 .Select(Type.GetType)
                 .Where(p => p?.IsClass == true)
                 .ToList()

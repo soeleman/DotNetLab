@@ -4,7 +4,7 @@ using Microsoft.OpenApi.Models;
 
 namespace Microsoft.AspNetCore.Builder
 {
-    public static class SwaggerExtensions
+    partial class SwaggerExtensions
     {
         public static IServiceCollection AddSwaggerGenCommon(
             this IServiceCollection services,
@@ -13,19 +13,6 @@ namespace Microsoft.AspNetCore.Builder
         {
             services.AddSwaggerGen(o => o.SwaggerDoc(version, new OpenApiInfo { Title = title }));
             return services;
-        }
-
-        public static IApplicationBuilder UseSwaggerCommon(
-            this IApplicationBuilder app)
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI(o =>
-            {
-                o.SwaggerEndpoint("/swagger/v1/swagger.json", "Todo API");
-                o.RoutePrefix = string.Empty;
-            });
-
-            return app;
         }
     }
 }

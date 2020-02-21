@@ -1,6 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup Label="CSharp">
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -10,10 +12,15 @@
   <ItemGroup Label="Project Packages">
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="FeatherHttp" Version="0.1.58-alpha.g44fef05de5" />
   </ItemGroup>
   <PropertyGroup Label="NuGet" Condition="'$(Configuration)' == 'Release'">
     <Description>Helper package for DavidFowl.Todo - github.com/davidfowl/Todos .</Description>
     <PackageTags>ASPNET-Core DavidFowl Todo API Controller</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <PropertyGroup Label="CodeAnalysis">
+    <DisableAnalyzers Condition="$(DisableAnalyzers) == ''">true</DisableAnalyzers>
+    <!--<CodeAnalysisRuleSet>CodeId.ruleset</CodeAnalysisRuleSet>-->
   </PropertyGroup>
 </Project>
