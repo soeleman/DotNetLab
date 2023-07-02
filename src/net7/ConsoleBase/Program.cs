@@ -1,0 +1,1 @@
+﻿Console.WriteLine($"{DateTime.Now} Hello, World!");
